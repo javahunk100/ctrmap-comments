@@ -1,0 +1,23 @@
+{
+  "name": "batchfeb2019",
+  "version": "1.0.0",
+  "description": "hey this is my first program",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "ignore"
+  ],
+  "author": "Nagendra",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.10",
+    "sequential-ids": "0.0.0",
+    "uniqid": "^5.0.3",
+    "express-fileupload": "^1.0.0"
+  }
+}
