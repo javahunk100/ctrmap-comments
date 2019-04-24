@@ -8,5 +8,6 @@ module.exports=function(express){
     express.delete("/comments/:cid",CommentsController.deleteCommentsByCid);
 	express.post("/comments",CommentsController.saveComments);
     express.put("/comments",CommentsController.updateComments);
+    express.get("/comments",CommentsController.findComments);
      
 };

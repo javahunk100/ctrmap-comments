@@ -14,6 +14,14 @@ exports.findCommentsByCommentId=function(commentId,callback){
     });
 };
 
+exports.findComments=function(callback){
+    CommentsDao.findComments(function(err,ddata){
+        callback(err,ddata);
+    });
+};
+
+
+
 exports.findCommentsByTaskId=function(taskid,callback) {
     CommentsDao.findCommentsByTaskId(taskid,function(err,comments){
         callback(err,comments);

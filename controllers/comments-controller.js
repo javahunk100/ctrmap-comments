@@ -103,3 +103,16 @@ exports.updateComments=function(req,res){
     });
 }
 
+
+exports.findComments=function(req,res) {
+    CommentsService.findComments(function(err,ddata){
+            if(err){
+                var response={status:"fail",message:err};
+                res.json(response);
+            }else{
+                var response={status:"success",data:ddata};
+                res.json(response);
+            }
+        });
+    
+};

@@ -46,6 +46,13 @@ exports.findCommentsByCommentId=function(commentId,callback) {
     });    
 }  
 
+exports.findComments=function(callback) {
+    CommentsEntity.find({}, function(err,data){
+        callback(err,data);
+    });    
+} 
+
+
 
 exports.deleteCommentsByCommentId=function(commentId,callback) {
     CommentsEntity.findOneAndRemove({commentId: commentId}, function(err){
