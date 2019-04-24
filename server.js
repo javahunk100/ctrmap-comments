@@ -8,6 +8,8 @@ var bodyParser=require('body-parser');
 var uniqid = require('uniqid');
 
 
+
+
 var app = express(); //Instantiating Express
 //setting port number for  express
 app.set('port', process.env.PORT || 4000);
@@ -38,13 +40,13 @@ mongodbConn();
 ///This is imported here
 //profile-mapping file contains function definition 
 var endPoint = express.Router();
+
 //below is change because of versioning in rest
-//require('./routes/movies-mapping')(app);
-require('./routes/movies-mapping')(endPoint);
+require('./routes/comments-mapping')(endPoint);
 
 //here endpoint will be prefix with  v1
-//app.use('/api/v3', endPoint);
-app.use('/', endPoint);
+app.use('/v3', endPoint);
+//app.use('/', endPoint);
 
 //Hey create one http server using app setting on which 
 //port number define inside express!

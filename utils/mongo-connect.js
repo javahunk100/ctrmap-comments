@@ -15,5 +15,5 @@ module.exports=function() {
 		console.log("MongoDB Database is ready to store data");	
     });
     //hey connect with mongodb
-	mongoose.connect('mongodb://localhost:27017/movies_db');
+	mongoose.connect('mongodb://localhost:27017/comments_db');
 };

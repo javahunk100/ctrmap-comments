@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+  <title>Pusher Test</title>
+  <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('c4f2c2977c698d3a9e2e', {
+      cluster: 'ap2',
+      forceTLS: true
+    });
+
+    var channel = pusher.subscribe('task-comments');
+    channel.bind('new_comment', function(data) {
+     // alert(JSON.stringify(data));
+      $("#commentBody").append(JSON.stringify(data));
+    });
+  </script>
+</head>
+<body>
+  
+
+  <div class="container">
+        <h1>Pusher Test</h1>
+        <p>
+          Try publishing an event to channel <code>my-channel</code>
+          with event name <code>my-event</code>.
+        </p>
+  <br/> 	
+				Comments  :
+				<textarea id="commentBody"  name="commentBody" rows="6" cols="40"  class="form-control" style="width: 70%"></textarea>
+            <br/>
+        </div>
+</body>

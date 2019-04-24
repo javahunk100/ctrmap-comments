@@ -18,6 +18,8 @@
     "mongoose": "^5.4.10",
     "sequential-ids": "0.0.0",
     "uniqid": "^5.0.3",
-    "express-fileupload": "^1.0.0"
+    "express-fileupload": "^1.0.0",
+    "path": "^0.12.7",
+    "pusher": "^1.5.1"
   }
 }
