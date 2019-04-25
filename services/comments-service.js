@@ -14,7 +14,8 @@ exports.saveComments=function(comments,callback) {
                     taskid: comments.taskid,
                     cemail: AppConfig.cemail,
                     companyName: AppConfig.cname,
-                    mobile: AppConfig.cmobile
+                    mobile: AppConfig.cmobile,
+                    message:"updated"
                 }];
             //code to send notification
             console.log("sending emails..............to the users");
@@ -47,12 +48,39 @@ exports.findCommentsByTaskId=function(taskid,callback) {
 
 exports.deleteCommentsByCid=function(commentid,callback) {
     CommentsDao.deleteCommentsByCommentId(commentid,function(err){
+        if(!err){
+            let cdata = [
+                {
+                    username: "JavaHunk",
+                    email: 'javahunk100@gmail.com',
+                    taskid: comments.taskid,
+                    cemail: AppConfig.cemail,
+                    companyName: AppConfig.cname,
+                    mobile: AppConfig.cmobile,
+                    message:"deleted"
+                }];
+            CommentEmailService.sendEmail(cdata);
+        } 
         callback(err);
     });      
 };
 
 exports.updateComments=function(comments,callback){
     CommentsDao.updateComments(comments,function(err){
+        if(!err){
+            let cdata = [
+                {
+                    username: "JavaHunk",
+                    email: 'javahunk100@gmail.com',
+                    taskid: comments.taskid,
+                    cemail: AppConfig.cemail,
+                    companyName: AppConfig.cname,
+                    mobile: AppConfig.cmobile,
+                    message:"updated"
+                }];
+            //code to send notification
+            CommentEmailService.sendEmail(cdata);
+        } 
         callback(err);
     });      
 };   
