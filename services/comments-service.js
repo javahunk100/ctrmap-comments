@@ -1,9 +1,26 @@
 
-var CommentsDao = require("../persistence/comments-dao");
 
+var CommentEmailService=require('../services/comments-mail-service');
+var CommentsDao = require("../persistence/comments-dao");
+var AppConfig=require('../config/app-config')
 //saving the comments into the database
 exports.saveComments=function(comments,callback) {
      CommentsDao.saveComments(comments,function(err,data) {
+        if(!err){
+            let cdata = [
+                {
+                    username: "JavaHunk",
+                    email: 'javahunk100@gmail.com',
+                    taskid: comments.taskid,
+                    cemail: AppConfig.cemail,
+                    companyName: AppConfig.cname,
+                    mobile: AppConfig.cmobile
+                }];
+            //code to send notification
+            console.log("sending emails..............to the users");
+            CommentEmailService.sendEmail(cdata);
+            console.log("email has been sent");
+        } 
         callback(err,data);
     });
 };   

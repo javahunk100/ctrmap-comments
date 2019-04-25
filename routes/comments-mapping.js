@@ -3,11 +3,16 @@ var CommentsController = require("../controllers/comments-controller");
 //below is function expression where we are passing e
 //instance of express framework as a parameter
 module.exports=function(express){
-    express.get("/tasks/comments/:tastid",CommentsController.findCommentsByTaskId);
-    express.get("/comments/:cid",CommentsController.findCommentsByCommentId);
-    express.delete("/comments/:cid",CommentsController.deleteCommentsByCid);
-	express.post("/comments",CommentsController.saveComments);
-    express.put("/comments",CommentsController.updateComments);
+    
+    express.post("/tasks/comments",CommentsController.saveComments);
+    express.put("/tasks/comments",CommentsController.updateComments);
+    
+    //find comments by taskid by date in chronological order
+    express.get("/tasks/:tastid/comments/",CommentsController.findCommentsByTaskId);
+    express.get("/tasks/:tastid/comments/:cid",CommentsController.findCommentsByCommentId);
+    express.delete("/tasks/:tastid/comments/:cid",CommentsController.deleteCommentsByCid);
+	
+    //find all comments
     express.get("/comments",CommentsController.findComments);
      
 };

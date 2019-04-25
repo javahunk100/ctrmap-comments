@@ -7,8 +7,9 @@ var bodyParser=require('body-parser');
 //to generate unique id
 var uniqid = require('uniqid');
 
-
-
+var path = require('path');
+var appDir = path.dirname(require.main.filename);
+global.appRoot=appDir;
 
 var app = express(); //Instantiating Express
 //setting port number for  express
